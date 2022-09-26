@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>speeddb package &mdash; SpeedDB  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="speeddb" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SpeedDB
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">speeddb</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">speeddb package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-speeddb.cli">speeddb.cli module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.cli.get_version"><code class="docutils literal notranslate"><span class="pre">get_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.cli.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.cli.runner"><code class="docutils literal notranslate"><span class="pre">runner()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-speeddb.database">speeddb.database module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.Database"><code class="docutils literal notranslate"><span class="pre">Database</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.DocumentDatabase"><code class="docutils literal notranslate"><span class="pre">DocumentDatabase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.KeyValDatabase"><code class="docutils literal notranslate"><span class="pre">KeyValDatabase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.build_db"><code class="docutils literal notranslate"><span class="pre">build_db()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.check_types"><code class="docutils literal notranslate"><span class="pre">check_types()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.destroy_db"><code class="docutils literal notranslate"><span class="pre">destroy_db()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.find"><code class="docutils literal notranslate"><span class="pre">find()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.database.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-speeddb.tasks_queue">speeddb.tasks_queue module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.tasks_queue.TasksQueue"><code class="docutils literal notranslate"><span class="pre">TasksQueue</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-speeddb">Module contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.DocumentDatabase"><code class="docutils literal notranslate"><span class="pre">DocumentDatabase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.KeyValDatabase"><code class="docutils literal notranslate"><span class="pre">KeyValDatabase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.build_db"><code class="docutils literal notranslate"><span class="pre">build_db()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.destroy_db"><code class="docutils literal notranslate"><span class="pre">destroy_db()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speeddb.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SpeedDB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">speeddb</a> &raquo;</li>
+      <li>speeddb package</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="speeddb-package">
+<h1>speeddb package<a class="headerlink" href="#speeddb-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-speeddb.cli">
+<span id="speeddb-cli-module"></span><h2>speeddb.cli module<a class="headerlink" href="#module-speeddb.cli" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.cli.get_version">
+<span class="sig-prename descclassname"><span class="pre">speeddb.cli.</span></span><span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.cli.get_version" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.cli.main">
+<span class="sig-prename descclassname"><span class="pre">speeddb.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Namespace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.cli.main" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.cli.read">
+<span class="sig-prename descclassname"><span class="pre">speeddb.cli.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.cli.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.cli.runner">
+<span class="sig-prename descclassname"><span class="pre">speeddb.cli.</span></span><span class="sig-name descname"><span class="pre">runner</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.cli.runner" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-speeddb.database">
+<span id="speeddb-database-module"></span><h2>speeddb.database module<a class="headerlink" href="#module-speeddb.database" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="speeddb.database.Database">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">Database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.Database" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>SpeedDB Database Main Class (Do not use this to connect to your database)</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">DocumentDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.DocumentDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#speeddb.database.Database" title="speeddb.database.Database"><code class="xref py py-class docutils literal notranslate"><span class="pre">Database</span></code></a></p>
+<p>a document-oriented database is data storage system designed for storing, retrieving and managing document-oriented information</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.DocumentDatabase.append" title="Permalink to this definition"></a></dt>
+<dd><p>Append a single document to the database</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Khayal&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.appendAll">
+<span class="sig-name descname"><span class="pre">appendAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.DocumentDatabase.appendAll" title="Permalink to this definition"></a></dt>
+<dd><p>Append multiple documents</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">y</span> <span class="p">}</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">appendAll</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.documents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">documents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#speeddb.database.DocumentDatabase.documents" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve number of documents in the database
+&gt;&gt;&gt; db.documents
+10
+&gt;&gt;&gt; type(db.documents)
+&lt;class ‘int’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#speeddb.database.DocumentDatabase.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve data based of a <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({})</span> <span class="c1"># get the latest document in the database</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> <span class="c1"># get latest 20 year old user</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({}))</span>
+<span class="go">&lt;class &#39;dict&#39;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.getAll">
+<span class="sig-name descname"><span class="pre">getAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#speeddb.database.DocumentDatabase.getAll" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve every document that match a <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">getAll</span><span class="p">({})</span> <span class="c1"># get every document in the database</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">getAll</span><span class="p">({</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> <span class="c1"># get all 20 years old users</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">getAll</span><span class="p">({}))</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.DocumentDatabase.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a single document that match <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">remove</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.removeAll">
+<span class="sig-name descname"><span class="pre">removeAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.DocumentDatabase.removeAll" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a multiple documents that match <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">removeAll</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.DocumentDatabase.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.DocumentDatabase.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update a document that match <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span>
+<span class="go">{&quot;name&quot;: &quot;Nawaf&quot;, &quot;age&quot;: 15}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">},</span> <span class="n">user</span><span class="p">)</span> <span class="c1"># &quot;update()&quot; will update the entire database</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">KeyValDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.KeyValDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#speeddb.database.Database" title="speeddb.database.Database"><code class="xref py py-class docutils literal notranslate"><span class="pre">Database</span></code></a></p>
+<p>A key-value database, is a data storage paradigm designed for storing, retrieving, and managing associative arrays, and a data structure more commonly known today as a dictionary or hash table.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.KeyValDatabase.clear" title="Permalink to this definition"></a></dt>
+<dd><p>remove every key in database</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.copy" title="Permalink to this definition"></a></dt>
+<dd><p>return a shallow copy of the database data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.get" title="Permalink to this definition"></a></dt>
+<dd><p>retrieve <cite>key</cite> if exists</p>
+<p>if not return <cite>default</cite> or None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.has">
+<span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.has" title="Permalink to this definition"></a></dt>
+<dd><p>check if <cite>key</cite> exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict_items</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.items" title="Permalink to this definition"></a></dt>
+<dd><p>return data like <cite>dict.items()</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>  <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot; &quot;</span><span class="n">Nawaf</span><span class="s2">&quot;,</span>
+<span class="gp">... </span>  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">test_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># That&#39;s the exact same thing when you do</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict_keys</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.keys" title="Permalink to this definition"></a></dt>
+<dd><p>return database keys</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.pop" title="Permalink to this definition"></a></dt>
+<dd><p>remove specified key and return the corresponding value.</p>
+<p>If key is not found, default is returned if given, otherwise None will be returned</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.KeyValDatabase.set" title="Permalink to this definition"></a></dt>
+<dd><p>set <cite>key`=`value</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.unset">
+<span class="sig-name descname"><span class="pre">unset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.KeyValDatabase.unset" title="Permalink to this definition"></a></dt>
+<dd><p>remove <cite>key</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.database.KeyValDatabase.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict_values</span></span></span><a class="headerlink" href="#speeddb.database.KeyValDatabase.values" title="Permalink to this definition"></a></dt>
+<dd><p>return database values</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.database.build_db">
+<span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">build_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">dbs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.build_db" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new database</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.database.check_types">
+<span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">check_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.check_types" title="Permalink to this definition"></a></dt>
+<dd><p>check if every element is the same type</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_types</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Hey!&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_types</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>from <a class="reference external" href="https://stackoverflow.com/questions/13252333/check-if-all-elements-of-a-list-are-of-the-same-type">https://stackoverflow.com/questions/13252333/check-if-all-elements-of-a-list-are-of-the-same-type</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.database.connect">
+<span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.connect" title="Permalink to this definition"></a></dt>
+<dd><p><cite>connect()</cite> is used to connect to the database easily</p>
+<p>can be used instead of calling <cite>speeddb.database.DocumentDatabase()</cite> directly</p>
+<p>but does the same job</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="s2">&quot;dbs/database&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>### Parameters:
+<cite>db</cite>:<cite>str</cite></p>
+<blockquote>
+<div><p>Database rel/abs path</p>
+</div></blockquote>
+<dl>
+<dt><cite>model</cite>:<cite>str</cite> (optional)</dt><dd><p>Database Model type</p>
+</dd>
+<dt><cite>use_tasks_queue</cite>:<cite>bool</cite> (optional)</dt><dd><p>Execute database related tasks in a thread which makes it faster (not in every project)</p>
+<p>Read more [here](<a class="reference external" href="https://illTypeThisLater">https://illTypeThisLater</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.database.destroy_db">
+<span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">destroy_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.destroy_db" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a database</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.database.find">
+<span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_filter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.find" title="Permalink to this definition"></a></dt>
+<dd><p>this algorithm searchs in a list of dicts (list[dict]) for a matching key and value</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">find</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+<span class="go">{&quot;name&quot;: &quot;Nawaf&quot;, &quot;age&quot;: 15}</span>
+</pre></div>
+</div>
+<p>btw i copied this from somewhere i forget where</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.database.init">
+<span class="sig-prename descclassname"><span class="pre">speeddb.database.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.database.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize a folder to store your databases</p>
+</dd></dl>
+
+</section>
+<section id="module-speeddb.tasks_queue">
+<span id="speeddb-tasks-queue-module"></span><h2>speeddb.tasks_queue module<a class="headerlink" href="#module-speeddb.tasks_queue" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="speeddb.tasks_queue.TasksQueue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">speeddb.tasks_queue.</span></span><span class="sig-name descname"><span class="pre">TasksQueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.tasks_queue.TasksQueue" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.tasks_queue.TasksQueue.add_task_and_execute">
+<span class="sig-name descname"><span class="pre">add_task_and_execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.tasks_queue.TasksQueue.add_task_and_execute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-speeddb">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-speeddb" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">speeddb.</span></span><span class="sig-name descname"><span class="pre">DocumentDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.DocumentDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#speeddb.database.Database" title="speeddb.database.Database"><code class="xref py py-class docutils literal notranslate"><span class="pre">Database</span></code></a></p>
+<p>a document-oriented database is data storage system designed for storing, retrieving and managing document-oriented information</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.DocumentDatabase.append" title="Permalink to this definition"></a></dt>
+<dd><p>Append a single document to the database</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Khayal&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.appendAll">
+<span class="sig-name descname"><span class="pre">appendAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.DocumentDatabase.appendAll" title="Permalink to this definition"></a></dt>
+<dd><p>Append multiple documents</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">y</span> <span class="p">}</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">appendAll</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.documents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">documents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#speeddb.DocumentDatabase.documents" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve number of documents in the database
+&gt;&gt;&gt; db.documents
+10
+&gt;&gt;&gt; type(db.documents)
+&lt;class ‘int’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#speeddb.DocumentDatabase.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve data based of a <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({})</span> <span class="c1"># get the latest document in the database</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> <span class="c1"># get latest 20 year old user</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({}))</span>
+<span class="go">&lt;class &#39;dict&#39;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.getAll">
+<span class="sig-name descname"><span class="pre">getAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#speeddb.DocumentDatabase.getAll" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve every document that match a <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">getAll</span><span class="p">({})</span> <span class="c1"># get every document in the database</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">getAll</span><span class="p">({</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span> <span class="c1"># get all 20 years old users</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">getAll</span><span class="p">({}))</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.DocumentDatabase.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a single document that match <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">remove</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.removeAll">
+<span class="sig-name descname"><span class="pre">removeAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.DocumentDatabase.removeAll" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a multiple documents that match <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">removeAll</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.DocumentDatabase.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.DocumentDatabase.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update a document that match <cite>filter</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span>
+<span class="go">{&quot;name&quot;: &quot;Nawaf&quot;, &quot;age&quot;: 15}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nawaf&quot;</span><span class="p">},</span> <span class="n">user</span><span class="p">)</span> <span class="c1"># &quot;update()&quot; will update the entire database</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">speeddb.</span></span><span class="sig-name descname"><span class="pre">KeyValDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.KeyValDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#speeddb.database.Database" title="speeddb.database.Database"><code class="xref py py-class docutils literal notranslate"><span class="pre">Database</span></code></a></p>
+<p>A key-value database, is a data storage paradigm designed for storing, retrieving, and managing associative arrays, and a data structure more commonly known today as a dictionary or hash table.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.KeyValDatabase.clear" title="Permalink to this definition"></a></dt>
+<dd><p>remove every key in database</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.copy" title="Permalink to this definition"></a></dt>
+<dd><p>return a shallow copy of the database data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.get" title="Permalink to this definition"></a></dt>
+<dd><p>retrieve <cite>key</cite> if exists</p>
+<p>if not return <cite>default</cite> or None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.has">
+<span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.has" title="Permalink to this definition"></a></dt>
+<dd><p>check if <cite>key</cite> exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict_items</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.items" title="Permalink to this definition"></a></dt>
+<dd><p>return data like <cite>dict.items()</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>  <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot; &quot;</span><span class="n">Nawaf</span><span class="s2">&quot;,</span>
+<span class="gp">... </span>  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">test_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># That&#39;s the exact same thing when you do</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict_keys</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.keys" title="Permalink to this definition"></a></dt>
+<dd><p>return database keys</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.pop" title="Permalink to this definition"></a></dt>
+<dd><p>remove specified key and return the corresponding value.</p>
+<p>If key is not found, default is returned if given, otherwise None will be returned</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.KeyValDatabase.set" title="Permalink to this definition"></a></dt>
+<dd><p>set <cite>key`=`value</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.unset">
+<span class="sig-name descname"><span class="pre">unset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.KeyValDatabase.unset" title="Permalink to this definition"></a></dt>
+<dd><p>remove <cite>key</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="speeddb.KeyValDatabase.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict_values</span></span></span><a class="headerlink" href="#speeddb.KeyValDatabase.values" title="Permalink to this definition"></a></dt>
+<dd><p>return database values</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.build_db">
+<span class="sig-prename descclassname"><span class="pre">speeddb.</span></span><span class="sig-name descname"><span class="pre">build_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">dbs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.build_db" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new database</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.connect">
+<span class="sig-prename descclassname"><span class="pre">speeddb.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tasks_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.connect" title="Permalink to this definition"></a></dt>
+<dd><p><cite>connect()</cite> is used to connect to the database easily</p>
+<p>can be used instead of calling <cite>speeddb.database.DocumentDatabase()</cite> directly</p>
+<p>but does the same job</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="s2">&quot;dbs/database&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>### Parameters:
+<cite>db</cite>:<cite>str</cite></p>
+<blockquote>
+<div><p>Database rel/abs path</p>
+</div></blockquote>
+<dl>
+<dt><cite>model</cite>:<cite>str</cite> (optional)</dt><dd><p>Database Model type</p>
+</dd>
+<dt><cite>use_tasks_queue</cite>:<cite>bool</cite> (optional)</dt><dd><p>Execute database related tasks in a thread which makes it faster (not in every project)</p>
+<p>Read more [here](<a class="reference external" href="https://illTypeThisLater">https://illTypeThisLater</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.destroy_db">
+<span class="sig-prename descclassname"><span class="pre">speeddb.</span></span><span class="sig-name descname"><span class="pre">destroy_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.destroy_db" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a database</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="speeddb.init">
+<span class="sig-prename descclassname"><span class="pre">speeddb.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#speeddb.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize a folder to store your databases</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="speeddb" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Nawaf Alqari.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
